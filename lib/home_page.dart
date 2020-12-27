@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prov9/cart_page.dart';
 
 
 
@@ -63,6 +64,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 260,
               margin: EdgeInsetsDirectional.only(top: 12),
+              padding: EdgeInsetsDirectional.only(top: 12),
               color: Colors.grey,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -70,12 +72,23 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (_, index) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(top: 12, right: 12),
-                      width: 200,
-                      height: 160,
-                      child: Text(""),
-                      color: Colors.grey,
+                    GestureDetector(
+                      onTap: () {
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => CartPage(),)
+                        );
+
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(top: 12, right: 12),
+                        padding: EdgeInsets.only(top: 12, right: 12),
+                        width: 200,
+                        height: 160,
+                        child: Text(""),
+                        color: Colors.grey,
+                      ),
                     ),
                     Text(
                       "product name",
@@ -99,6 +112,7 @@ class _HomePageState extends State<HomePage> {
 
                       },
                     ),
+                    SizedBox(width: 4),
                   ],
                 ),
               ),
