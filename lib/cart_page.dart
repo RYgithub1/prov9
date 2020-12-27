@@ -6,7 +6,7 @@ class CartPage extends StatefulWidget {
 
   CartPage({Key key, this.cartList}) : super(key: key);   /// [Constructer]
   // final cartList = [];
-  final List cartList = [];   /// [field]
+  final List cartList;   /// [field]
 
   @override
   _CartPageState createState() => _CartPageState();
@@ -20,12 +20,18 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(widget.cartList.length.toString()),
             FlatButton(
-              child: Text(
-                "Delete the element"
-                style: TextStyle(fontSize: 20)),
+              child: Text("Delete the element"),
+              onPressed: () {
+                widget.cartList.removeLast();
+
+                /// [state反映したUI表示numberにするため追加]
+                setState(() {});
+
+              },
             )
           ],
         ),

@@ -18,6 +18,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.settings),
+          onPressed: () {},
+        ),
         title: Text("Amazon Cart"),
         centerTitle: true,
         actions: <Widget>[
@@ -25,21 +29,18 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                    
+                },
               )
             ],
           ),
           InkWell(
             child: Center(
-              child: Text(
-                "Sign In",
-                style: TextStyle(fontSize: 20),
-              ),
+              child: Icon(Icons.logout),
             ),
             onTap: (){
-
-
-              
+                  
             },
           ),
         ]
@@ -64,8 +65,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 260,
               margin: EdgeInsetsDirectional.only(top: 12),
-              padding: EdgeInsetsDirectional.only(top: 12),
-              color: Colors.grey,
+              color: Colors.white,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
@@ -74,16 +74,16 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (_) => CartPage(),)
+                          MaterialPageRoute(builder: (_) => CartPage(
+                              cartList: cartList,
+                          )),
                         );
-
                       },
+
                       child: Container(
                         margin: EdgeInsets.only(top: 12, right: 12),
-                        padding: EdgeInsets.only(top: 12, right: 12),
                         width: 200,
                         height: 160,
                         child: Text(""),
@@ -112,7 +112,6 @@ class _HomePageState extends State<HomePage> {
 
                       },
                     ),
-                    SizedBox(width: 4),
                   ],
                 ),
               ),
